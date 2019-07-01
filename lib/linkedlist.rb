@@ -102,6 +102,20 @@ class LinkedList
 
   # Reverse this linked list in place (Destructive)
   def reverse!()
+    newTail = @head
+    current = @head
+    previous = nil
+
+    while not current.nil? do
+      nextNode = current.next
+      current.next = previous
+      previous = current
+      current = nextNode
+    end
+
+    @head = previous
+    @tail = newTail
+
     self
   end
 
