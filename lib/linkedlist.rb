@@ -100,6 +100,7 @@ class LinkedList
     reverseList.call(@head)
   end
 
+  # Reverse this linked list in place (Destructive)
   def reverse!()
     self
   end

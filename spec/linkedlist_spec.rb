@@ -108,7 +108,9 @@ RSpec.describe LinkedList do
       list.append 2
       list.append 3
 
-      expect(list.reverse!.asArray).to eq [3, 2, 1]
+      list.reverse!
+
+      expect(list.asArray).to eq [3, 2, 1]
     end
   end
 end
