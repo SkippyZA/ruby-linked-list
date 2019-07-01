@@ -148,17 +148,17 @@ class LinkedList
 
   # Find the Node where the two LinkedList merge
   #
-  # @example Example 1
+  # @example Merges at 2
   #   1
   #    \
-  #     2----3----NULL
+  #     2 -- 3 -- NULL
   #    /
   #   1
   #
-  # @example Example 2
-  #   1----2
+  # @example Merges at 3
+  #   1 -- 2
   #         \
-  #          3----Null
+  #          3 -- Null
   #         /
   #        1
   #
