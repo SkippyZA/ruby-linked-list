@@ -95,7 +95,7 @@ class LinkedList
     list = LinkedList.new
 
     reverse_list = Proc.new do |node|
-      if not node.next.nil?
+      unless node.next.nil?
         reverse_list.call(node.next)
       end
 
@@ -111,7 +111,7 @@ class LinkedList
     current = @head
     previous = nil
 
-    while not current.nil? do
+    until current.nil? do
       next_node = current.next
       current.next = previous
       previous = current
@@ -129,7 +129,7 @@ class LinkedList
     list_array = []
     node = @head
 
-    while not node.nil? do
+    until node.nil? do
       list_array.push node.data
       node = node.next
     end
@@ -159,14 +159,16 @@ class LinkedList
   def self.find_merge_node(list_1, list_2)
     list_2_object_ids = []
 
+    # create a hash object of object ids for list_2
     current = list_2.head
-    while not current.nil?
+    until current.nil?
       list_2_object_ids.push(current.object_id)
       current = current.next
     end
 
+    # using list_1, return the node when its object id is in the hash
     current = list_1.head
-    while not current.nil?
+    until current.nil?
       if list_2_object_ids.include?(current.object_id)
         return current
       end
