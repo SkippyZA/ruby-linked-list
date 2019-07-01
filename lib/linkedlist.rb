@@ -24,8 +24,9 @@ class LinkedList
 
   # Add data to the end of the linked list
   #
-  # ==== Params
-  # * +data+ - data to store in list
+  # @param data [any] data to store in list
+  #
+  # @return [LinkedList]
   def append(data)
     newNode = LinkedListNode.new data
 
@@ -41,9 +42,10 @@ class LinkedList
 
   # Insert data at a specific position of the list
   #
-  # ==== Params
-  # * +pos+ - Position in list to insert data
-  # * +data+ - Data to insert
+  # @param pos [Number] Position in list to insert data
+  # @param data [any] Data to insert
+  #
+  # @return [LinkedList]
   def insert_at(pos, data)
     newNode = LinkedListNode.new data
 
@@ -70,8 +72,9 @@ class LinkedList
 
   # Remove a node from the list at the specified position
   #
-  # ==== Params
-  # * +pos+ - Position in list to remove node
+  # @param pos [Number] Position in list to remove node
+  #
+  # @return [LinkedList]
   def delete_at(pos)
     node = @head
 
@@ -91,6 +94,8 @@ class LinkedList
   end
 
   # Return a new reversed LinkedList
+  #
+  # @return [LinkedList]
   def reverse()
     list = LinkedList.new
 
@@ -106,6 +111,8 @@ class LinkedList
   end
 
   # Reverse this linked list in place (Destructive)
+  #
+  # @return [LinkedList]
   def reverse!()
     new_tail = @head
     current = @head
@@ -125,6 +132,8 @@ class LinkedList
   end
 
   # Return the entire linked list as an array
+  #
+  # @return [Array]
   def to_a()
     list_array = []
     node = @head
@@ -139,23 +148,24 @@ class LinkedList
 
   # Find the Node where the two LinkedList merge
   #
-  # ==== Example 1
+  # @example Example 1
   #   1
   #    \
   #     2----3----NULL
   #    /
   #   1
   #
-  # ==== Example 1
+  # @example Example 2
   #   1----2
   #         \
   #          3----Null
   #         /
   #        1
   #
-  # ==== Params
-  # * +list_1+ - LinkedList A
-  # * +list_2+ - LinkedList B
+  # @param list_1 [LinkedList] List A
+  # @param list_2 [LinkedList] List B
+  #
+  # @return [LinkedListNode]
   def self.find_merge_node(list_1, list_2)
     list_2_object_ids = []
 
