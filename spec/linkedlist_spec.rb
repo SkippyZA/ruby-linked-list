@@ -115,4 +115,38 @@ RSpec.describe LinkedList do
       expect(list.to_a).to eq [6, 5, 4, 3, 2, 1]
     end
   end
+
+  context "#find_merge_node" do
+    it "should return the merge node" do
+      # Initialize shared list
+      head_shared_node = LinkedListNode.new(1000)
+      head_shared_node.next = LinkedListNode.new(2001)
+      head_shared_node.next.next = LinkedListNode.new(2002)
+      head_shared_node.next.next.next = LinkedListNode.new(2003)
+      head_shared_node.next.next.next.next = LinkedListNode.new(2004)
+      tail = head_shared_node.next.next.next.next
+
+      # List 1
+      list_1 = LinkedList.new
+      list_1.append 1
+      list_1.append 2
+      list_1.append 3
+
+      list_1.tail.next = head_shared_node
+      list_1.tail = tail
+
+      # List 2
+      list_2 = LinkedList.new
+      list_2.append 21
+      list_2.append 22
+      list_2.append 23
+
+      list_2.tail.next = head_shared_node
+      list_2.tail = tail
+
+      # Get the merge node and assert
+      merge_node = LinkedList.find_merge_node(list_1, list_2)
+      expect(merge_node).to be head_shared_node
+    end
+  end
 end
