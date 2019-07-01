@@ -40,7 +40,7 @@ class LinkedList
   #
   # * +pos+ - Position in list to insert data
   # * +data+ - Data to insert
-  def insertAt(pos, data)
+  def insert_at(pos, data)
     newNode = LinkedListNode.new data
 
     if (pos == 0)
@@ -67,7 +67,7 @@ class LinkedList
   # Remove a node from the list at the specified position
   #
   # * +pos+ - Position in list to remove node
-  def deleteAt(pos)
+  def delete_at(pos)
     node = @head
 
     if pos == 0
@@ -89,46 +89,46 @@ class LinkedList
   def reverse()
     list = LinkedList.new
 
-    reverseList = Proc.new do |node|
+    reverse_list = Proc.new do |node|
       if not node.next.nil?
-        reverseList.call(node.next)
+        reverse_list.call(node.next)
       end
 
       list.append(node.data)
     end
 
-    reverseList.call(@head)
+    reverse_list.call(@head)
   end
 
   # Reverse this linked list in place (Destructive)
   def reverse!()
-    newTail = @head
+    new_tail = @head
     current = @head
     previous = nil
 
     while not current.nil? do
-      nextNode = current.next
+      next_node = current.next
       current.next = previous
       previous = current
-      current = nextNode
+      current = next_node
     end
 
     @head = previous
-    @tail = newTail
+    @tail = new_tail
 
     self
   end
 
   # Return the entire linked list as an array
   def to_a()
-    listArray = []
+    list_array = []
     node = @head
 
     while not node.nil? do
-      listArray.push node.data
+      list_array.push node.data
       node = node.next
     end
 
-    listArray
+    list_array
   end
 end

@@ -12,14 +12,14 @@ RSpec.describe LinkedList do
     end
   end
 
-  context "#insertAt" do
+  context "#insert_at" do
     it "should insert in the middle of the list" do
       list = LinkedList.new
       list.append 1
       list.append 2
       list.append 3
 
-      list.insertAt(2, 10)
+      list.insert_at(2, 10)
 
       expect(list.to_a).to eq [1, 2, 10, 3]
     end
@@ -29,7 +29,7 @@ RSpec.describe LinkedList do
       list.append 1
       list.append 2
 
-      list.insertAt(0, 10)
+      list.insert_at(0, 10)
 
       expect(list.to_a).to eq [10, 1, 2]
     end
@@ -39,7 +39,7 @@ RSpec.describe LinkedList do
       list.append 1
       list.append 2
 
-      list.insertAt(2, 10)
+      list.insert_at(2, 10)
 
       expect(list.to_a).to eq [1, 2, 10]
     end
@@ -47,20 +47,20 @@ RSpec.describe LinkedList do
     it "should insert at the head as the only value" do
       list = LinkedList.new
 
-      list.insertAt(0, 10)
+      list.insert_at(0, 10)
 
       expect(list.to_a).to eq [10]
     end
   end
 
-  context "#deleteAt" do
+  context "#delete_at" do
     it "should remove the head of the list" do
       list = LinkedList.new
       list.append 1
       list.append 2
       list.append 3
 
-      list.deleteAt 0
+      list.delete_at 0
 
       expect(list.to_a).to eq [2, 3]
     end
@@ -71,7 +71,7 @@ RSpec.describe LinkedList do
       list.append 2
       list.append 3
 
-      list.deleteAt 1
+      list.delete_at 1
 
       expect(list.to_a).to eq [1, 3]
     end
@@ -82,7 +82,7 @@ RSpec.describe LinkedList do
       list.append 2
       list.append 3
 
-      list.deleteAt 2
+      list.delete_at 2
 
       expect(list.to_a).to eq [1, 2]
     end
