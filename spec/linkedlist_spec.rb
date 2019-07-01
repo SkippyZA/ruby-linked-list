@@ -117,6 +117,41 @@ RSpec.describe LinkedList do
   end
 
   context "#find_merge_node" do
+    it "should return nil if no merge node found" do
+      # List 1
+      list_1 = LinkedList.new
+      list_1.append 1
+      list_1.append 2
+      list_1.append 3
+
+      # List 2
+      list_2 = LinkedList.new
+      list_2.append 21
+      list_2.append 22
+      list_2.append 23
+
+      expect(LinkedList.find_merge_node(list_1, list_2)).to be_nil
+    end
+
+    it "should return the head node when supplying the same list as both arguments" do
+      # Initialize shared list
+      head_shared_node = LinkedListNode.new(1000)
+      head_shared_node.next = LinkedListNode.new(2001)
+      head_shared_node.next.next = LinkedListNode.new(2002)
+      head_shared_node.next.next.next = LinkedListNode.new(2003)
+      head_shared_node.next.next.next.next = LinkedListNode.new(2004)
+      tail = head_shared_node.next.next.next.next
+
+      # List
+      list_1 = LinkedList.new
+      list_1.head = head_shared_node
+      list_1.tail = tail
+
+      # Get the merge node and assert
+      merge_node = LinkedList.find_merge_node(list_1, list_1)
+      expect(merge_node).to be head_shared_node
+    end
+
     it "should return the merge node" do
       # Initialize shared list
       head_shared_node = LinkedListNode.new(1000)
