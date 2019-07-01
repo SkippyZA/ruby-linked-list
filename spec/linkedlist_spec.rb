@@ -1,7 +1,6 @@
 require "linkedlist"
 
 RSpec.describe LinkedList do
-
   context "#append" do
     it "adds to the end of the list" do
       list = LinkedList.new
@@ -9,7 +8,7 @@ RSpec.describe LinkedList do
       list.append 2
       list.append 3
 
-      expect(list.asArray).to eq [1, 2, 3]
+      expect(list.to_a).to eq [1, 2, 3]
     end
   end
 
@@ -22,7 +21,7 @@ RSpec.describe LinkedList do
 
       list.insertAt(2, 10)
 
-      expect(list.asArray).to eq [1, 2, 10, 3]
+      expect(list.to_a).to eq [1, 2, 10, 3]
     end
 
     it "should insert at the head of the list when adding at position 0" do
@@ -32,7 +31,7 @@ RSpec.describe LinkedList do
 
       list.insertAt(0, 10)
 
-      expect(list.asArray).to eq [10, 1, 2]
+      expect(list.to_a).to eq [10, 1, 2]
     end
 
     it "should insert at the end of the list" do
@@ -42,7 +41,7 @@ RSpec.describe LinkedList do
 
       list.insertAt(2, 10)
 
-      expect(list.asArray).to eq [1, 2, 10]
+      expect(list.to_a).to eq [1, 2, 10]
     end
 
     it "should insert at the head as the only value" do
@@ -50,7 +49,7 @@ RSpec.describe LinkedList do
 
       list.insertAt(0, 10)
 
-      expect(list.asArray).to eq [10]
+      expect(list.to_a).to eq [10]
     end
   end
 
@@ -63,7 +62,7 @@ RSpec.describe LinkedList do
 
       list.deleteAt 0
 
-      expect(list.asArray).to eq [2, 3]
+      expect(list.to_a).to eq [2, 3]
     end
 
     it "should delete data in the middle of the list" do
@@ -74,7 +73,7 @@ RSpec.describe LinkedList do
 
       list.deleteAt 1
 
-      expect(list.asArray).to eq [1, 3]
+      expect(list.to_a).to eq [1, 3]
     end
 
     it "should remove the last value of the list" do
@@ -85,7 +84,7 @@ RSpec.describe LinkedList do
 
       list.deleteAt 2
 
-      expect(list.asArray).to eq [1, 2]
+      expect(list.to_a).to eq [1, 2]
     end
   end
 
@@ -96,8 +95,8 @@ RSpec.describe LinkedList do
       list.append 2
       list.append 3
 
-      expect(list.reverse.asArray).to eq [3, 2, 1]
-      expect(list.asArray).to eq [1, 2, 3]
+      expect(list.reverse.to_a).to eq [3, 2, 1]
+      expect(list.to_a).to eq [1, 2, 3]
     end
   end
 
@@ -113,7 +112,7 @@ RSpec.describe LinkedList do
 
       list.reverse!
 
-      expect(list.asArray).to eq [6, 5, 4, 3, 2, 1]
+      expect(list.to_a).to eq [6, 5, 4, 3, 2, 1]
     end
   end
 end

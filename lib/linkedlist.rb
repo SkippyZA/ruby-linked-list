@@ -120,7 +120,7 @@ class LinkedList
   end
 
   # Return the entire linked list as an array
-  def asArray()
+  def to_a()
     listArray = []
     node = @head
 
