@@ -6,6 +6,8 @@ class LinkedListNode
   attr_accessor :next
 
   # Create a LinkedListNode with supplied data
+  #
+  # @param data [any] Data for node
   def initialize(data)
     @data = data
     @next = nil
@@ -185,6 +187,5 @@ class LinkedList
 
       current = current.next
     end
-
   end
 end
