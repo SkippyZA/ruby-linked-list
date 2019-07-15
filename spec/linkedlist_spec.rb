@@ -184,4 +184,23 @@ RSpec.describe LinkedList do
       expect(merge_node).to be head_shared_node
     end
   end
+
+  context "merge_lists" do
+    it "should merge 2 sorted lists" do
+      list_1 = LinkedList.new
+      list_1.append 1
+      list_1.append 2
+      list_1.append 3
+      list_1.append 4
+
+      list_2 = LinkedList.new
+      list_2.append 3
+      list_2.append 6
+
+      merged_list = LinkedList.merge_lists(list_1, list_2)
+      expected_result = [1, 2, 3, 3, 4, 6]
+
+      expect(merged_list.to_a).to eq expected_result
+    end
+  end
 end

@@ -1,13 +1,13 @@
 # Node class for LinkedList
 class LinkedListNode
-  # Data for LinkedListNode
+  # @return [Object] Data for LinkedListNode
   attr_accessor :data
-  # Reference to next LinkedListNode
+  # @return [LinkedListNode] Reference to next LinkedListNode
   attr_accessor :next
 
   # Create a LinkedListNode with supplied data
   #
-  # @param data [any] Data for node
+  # @param data [Object] Data for node
   def initialize(data)
     @data = data
     @next = nil
@@ -16,7 +16,10 @@ end
 
 # Linked list data structure
 class LinkedList
-  attr_accessor :head, :tail
+  # @return [LinkedListNode] head of linked list
+  attr_accessor :head
+  # @return [LinkedListNode] point to end of linked list
+  attr_accessor :tail
 
   # Initialize an empty LinkedList
   def initialize()
@@ -26,7 +29,7 @@ class LinkedList
 
   # Add data to the end of the linked list
   #
-  # @param data [any] data to store in list
+  # @param data [Object] data to store in list
   #
   # @return [LinkedList]
   def append(data)
@@ -44,8 +47,8 @@ class LinkedList
 
   # Insert data at a specific position of the list
   #
-  # @param pos [Number] Position in list to insert data
-  # @param data [any] Data to insert
+  # @param pos [Integer] Position in list to insert data
+  # @param data [Object] Data to insert
   #
   # @return [LinkedList]
   def insert_at(pos, data)
@@ -74,7 +77,7 @@ class LinkedList
 
   # Remove a node from the list at the specified position
   #
-  # @param pos [Number] Position in list to remove node
+  # @param pos [Integer] Position in list to remove node
   #
   # @return [LinkedList]
   def delete_at(pos)
@@ -187,5 +190,26 @@ class LinkedList
 
       current = current.next
     end
+  end
+
+
+  # Merge 2 sorted LinkedLists in ascending order
+  #
+  # @example
+  #   The first linked list is: 1 -> 2 -> 3 -> 4 -> NULL
+  #   The second linked list is: 3 -> 6 -> NULL
+  #   Hence, the merged linked list is: 1 -> 2 -> 3 -> 3 -> 4 -> 6 -> NULL
+  #
+  # @example
+  #   list_1 = [ 1, 2, 3, 4 ]
+  #   list_2 = [ 3, 6 ]
+  #   result = LinkedList.merge_lists(list_1, list_2) # result = [ 1, 2, 3, 3, 4, 6 ]
+  #
+  # @param list_1 [LinkedList] List A
+  # @param list_2 [LinkedList] List B
+  #
+  # @return [LinkedList]
+  def self.merge_lists(list_1, list_2)
+    list_1
   end
 end
