@@ -35,15 +35,15 @@ class LinkedList
   #
   # @return [LinkedList]
   def append(data)
-    newNode = LinkedListNode.new data
+    new_node = LinkedListNode.new data
 
     if @head.nil?
-      @head = newNode
+      @head = new_node
     else
-      @tail.next = newNode
+      @tail.next = new_node
     end
 
-    @tail = newNode
+    @tail = new_node
     self
   end
 
@@ -54,11 +54,11 @@ class LinkedList
   #
   # @return [LinkedList]
   def insert_at(pos, data)
-    newNode = LinkedListNode.new data
+    new_node = LinkedListNode.new data
 
     if pos == 0
-      newNode.next = @head
-      @head = newNode
+      new_node.next = @head
+      @head = new_node
     else
       node = @head
 
@@ -66,11 +66,11 @@ class LinkedList
         node = node.next
       end
 
-      newNode.next = node.next
-      node.next = newNode
+      new_node.next = node.next
+      node.next = new_node
     end
 
-    @tail = newNode if newNode.next.nil?
+    @tail = new_node if new_node.next.nil?
 
     self
   end
@@ -163,22 +163,22 @@ class LinkedList
   #         /
   #        1
   #
-  # @param list_1 [LinkedList] List A
-  # @param list_2 [LinkedList] List B
+  # @param list1 [LinkedList] List A
+  # @param list2 [LinkedList] List B
   #
   # @return [LinkedListNode]
-  def self.find_merge_node(list_1, list_2)
+  def self.find_merge_node(list1, list2)
     list_2_object_ids = []
 
-    # create a hash object of object ids for list_2
-    current = list_2.head
+    # create a hash object of object ids for list2
+    current = list2.head
     until current.nil?
       list_2_object_ids.push(current.object_id)
       current = current.next
     end
 
-    # using list_1, return the node when its object id is in the hash
-    current = list_1.head
+    # using list1, return the node when its object id is in the hash
+    current = list1.head
     until current.nil?
       return current if list_2_object_ids.include?(current.object_id)
 
@@ -194,15 +194,15 @@ class LinkedList
   #   Hence, the merged linked list is: 1 -> 2 -> 3 -> 3 -> 4 -> 6 -> NULL
   #
   # @example
-  #   list_1 = [ 1, 2, 3, 4 ]
-  #   list_2 = [ 3, 6 ]
-  #   result = LinkedList.merge_lists(list_1, list_2) # result = [ 1, 2, 3, 3, 4, 6 ]
+  #   list1 = [ 1, 2, 3, 4 ]
+  #   list2 = [ 3, 6 ]
+  #   result = LinkedList.merge_lists(list1, list2) # result = [ 1, 2, 3, 3, 4, 6 ]
   #
-  # @param list_1 [LinkedList] List A
-  # @param list_2 [LinkedList] List B
+  # @param list1 [LinkedList] List A
+  # @param list2 [LinkedList] List B
   #
   # @return [LinkedList]
-  def self.merge_lists(list_1, _list_2)
-    list_1
+  def self.merge_lists(list1, list2)
+    list1
   end
 end

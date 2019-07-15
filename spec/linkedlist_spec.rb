@@ -121,18 +121,18 @@ RSpec.describe LinkedList do
   context '#find_merge_node' do
     it 'should return nil if no merge node found' do
       # List 1
-      list_1 = LinkedList.new
-      list_1.append 1
-      list_1.append 2
-      list_1.append 3
+      list1 = LinkedList.new
+      list1.append 1
+      list1.append 2
+      list1.append 3
 
       # List 2
-      list_2 = LinkedList.new
-      list_2.append 21
-      list_2.append 22
-      list_2.append 23
+      list2 = LinkedList.new
+      list2.append 21
+      list2.append 22
+      list2.append 23
 
-      expect(LinkedList.find_merge_node(list_1, list_2)).to be_nil
+      expect(LinkedList.find_merge_node(list1, list2)).to be_nil
     end
 
     it 'should return the head node when supplying the same list as both arguments' do
@@ -145,12 +145,12 @@ RSpec.describe LinkedList do
       tail = head_shared_node.next.next.next.next
 
       # List
-      list_1 = LinkedList.new
-      list_1.head = head_shared_node
-      list_1.tail = tail
+      list1 = LinkedList.new
+      list1.head = head_shared_node
+      list1.tail = tail
 
       # Get the merge node and assert
-      merge_node = LinkedList.find_merge_node(list_1, list_1)
+      merge_node = LinkedList.find_merge_node(list1, list1)
       expect(merge_node).to be head_shared_node
     end
 
@@ -164,42 +164,42 @@ RSpec.describe LinkedList do
       tail = head_shared_node.next.next.next.next
 
       # List 1
-      list_1 = LinkedList.new
-      list_1.append 1
-      list_1.append 2
-      list_1.append 3
+      list1 = LinkedList.new
+      list1.append 1
+      list1.append 2
+      list1.append 3
 
-      list_1.tail.next = head_shared_node
-      list_1.tail = tail
+      list1.tail.next = head_shared_node
+      list1.tail = tail
 
       # List 2
-      list_2 = LinkedList.new
-      list_2.append 21
-      list_2.append 22
-      list_2.append 23
+      list2 = LinkedList.new
+      list2.append 21
+      list2.append 22
+      list2.append 23
 
-      list_2.tail.next = head_shared_node
-      list_2.tail = tail
+      list2.tail.next = head_shared_node
+      list2.tail = tail
 
       # Get the merge node and assert
-      merge_node = LinkedList.find_merge_node(list_1, list_2)
+      merge_node = LinkedList.find_merge_node(list1, list2)
       expect(merge_node).to be head_shared_node
     end
   end
 
   context 'merge_lists' do
     it 'should merge 2 sorted lists' do
-      list_1 = LinkedList.new
-      list_1.append 1
-      list_1.append 2
-      list_1.append 3
-      list_1.append 4
+      list1 = LinkedList.new
+      list1.append 1
+      list1.append 2
+      list1.append 3
+      list1.append 4
 
-      list_2 = LinkedList.new
-      list_2.append 3
-      list_2.append 6
+      list2 = LinkedList.new
+      list2.append 3
+      list2.append 6
 
-      merged_list = LinkedList.merge_lists(list_1, list_2)
+      merged_list = LinkedList.merge_lists(list1, list2)
       expected_result = [1, 2, 3, 3, 4, 6]
 
       expect(merged_list.to_a).to eq expected_result
