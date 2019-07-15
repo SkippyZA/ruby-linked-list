@@ -1,7 +1,9 @@
-require "yard"
-require "rspec/core/rake_task"
+# frozen_string_literal: true
+
+require 'yard'
+require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
 YARD::Rake::YardocTask.new(:docs)
 
-task :default => :spec
+task default: :spec

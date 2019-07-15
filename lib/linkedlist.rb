@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Node class for LinkedList
 class LinkedListNode
   # @return [Object] Data for LinkedListNode
@@ -22,7 +24,7 @@ class LinkedList
   attr_accessor :tail
 
   # Initialize an empty LinkedList
-  def initialize()
+  def initialize
     @head = nil
     @tail = nil
   end
@@ -54,7 +56,7 @@ class LinkedList
   def insert_at(pos, data)
     newNode = LinkedListNode.new data
 
-    if (pos == 0)
+    if pos == 0
       newNode.next = @head
       @head = newNode
     else
@@ -68,9 +70,7 @@ class LinkedList
       node.next = newNode
     end
 
-    if newNode.next.nil?
-      @tail = newNode
-    end
+    @tail = newNode if newNode.next.nil?
 
     self
   end
@@ -86,28 +86,24 @@ class LinkedList
     if pos == 0
       @head = node.next
     else
-      (pos -1).times do
+      (pos - 1).times do
         node = node.next
       end
 
       node.next = node.next.next
     end
 
-    if node.next.nil?
-      @tail = node
-    end
+    @tail = node if node.next.nil?
   end
 
   # Return a new reversed LinkedList
   #
   # @return [LinkedList]
-  def reverse()
+  def reverse
     list = LinkedList.new
 
-    reverse_list = Proc.new do |node|
-      unless node.next.nil?
-        reverse_list.call(node.next)
-      end
+    reverse_list = proc do |node|
+      reverse_list.call(node.next) unless node.next.nil?
 
       list.append(node.data)
     end
@@ -118,12 +114,12 @@ class LinkedList
   # Reverse this linked list in place (Destructive)
   #
   # @return [LinkedList]
-  def reverse!()
+  def reverse!
     new_tail = @head
     current = @head
     previous = nil
 
-    until current.nil? do
+    until current.nil?
       next_node = current.next
       current.next = previous
       previous = current
@@ -139,11 +135,11 @@ class LinkedList
   # Return the entire linked list as an array
   #
   # @return [Array]
-  def to_a()
+  def to_a
     list_array = []
     node = @head
 
-    until node.nil? do
+    until node.nil?
       list_array.push node.data
       node = node.next
     end
@@ -184,14 +180,11 @@ class LinkedList
     # using list_1, return the node when its object id is in the hash
     current = list_1.head
     until current.nil?
-      if list_2_object_ids.include?(current.object_id)
-        return current
-      end
+      return current if list_2_object_ids.include?(current.object_id)
 
       current = current.next
     end
   end
-
 
   # Merge 2 sorted LinkedLists in ascending order
   #
@@ -209,7 +202,7 @@ class LinkedList
   # @param list_2 [LinkedList] List B
   #
   # @return [LinkedList]
-  def self.merge_lists(list_1, list_2)
+  def self.merge_lists(list_1, _list_2)
     list_1
   end
 end

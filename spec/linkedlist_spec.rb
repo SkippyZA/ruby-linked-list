@@ -1,8 +1,10 @@
-require "linkedlist"
+# frozen_string_literal: true
+
+require 'linkedlist'
 
 RSpec.describe LinkedList do
-  context "#append" do
-    it "adds to the end of the list" do
+  context '#append' do
+    it 'adds to the end of the list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -12,8 +14,8 @@ RSpec.describe LinkedList do
     end
   end
 
-  context "#insert_at" do
-    it "should insert in the middle of the list" do
+  context '#insert_at' do
+    it 'should insert in the middle of the list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -24,7 +26,7 @@ RSpec.describe LinkedList do
       expect(list.to_a).to eq [1, 2, 10, 3]
     end
 
-    it "should insert at the head of the list when adding at position 0" do
+    it 'should insert at the head of the list when adding at position 0' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -34,7 +36,7 @@ RSpec.describe LinkedList do
       expect(list.to_a).to eq [10, 1, 2]
     end
 
-    it "should insert at the end of the list" do
+    it 'should insert at the end of the list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -44,7 +46,7 @@ RSpec.describe LinkedList do
       expect(list.to_a).to eq [1, 2, 10]
     end
 
-    it "should insert at the head as the only value" do
+    it 'should insert at the head as the only value' do
       list = LinkedList.new
 
       list.insert_at(0, 10)
@@ -53,8 +55,8 @@ RSpec.describe LinkedList do
     end
   end
 
-  context "#delete_at" do
-    it "should remove the head of the list" do
+  context '#delete_at' do
+    it 'should remove the head of the list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -65,7 +67,7 @@ RSpec.describe LinkedList do
       expect(list.to_a).to eq [2, 3]
     end
 
-    it "should delete data in the middle of the list" do
+    it 'should delete data in the middle of the list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -76,7 +78,7 @@ RSpec.describe LinkedList do
       expect(list.to_a).to eq [1, 3]
     end
 
-    it "should remove the last value of the list" do
+    it 'should remove the last value of the list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -88,8 +90,8 @@ RSpec.describe LinkedList do
     end
   end
 
-  context "#reverse" do
-    it "should return a reversed linked list" do
+  context '#reverse' do
+    it 'should return a reversed linked list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -100,8 +102,8 @@ RSpec.describe LinkedList do
     end
   end
 
-  context "#reverse!" do
-    it "should reverse the order of the linked list" do
+  context '#reverse!' do
+    it 'should reverse the order of the linked list' do
       list = LinkedList.new
       list.append 1
       list.append 2
@@ -116,8 +118,8 @@ RSpec.describe LinkedList do
     end
   end
 
-  context "#find_merge_node" do
-    it "should return nil if no merge node found" do
+  context '#find_merge_node' do
+    it 'should return nil if no merge node found' do
       # List 1
       list_1 = LinkedList.new
       list_1.append 1
@@ -133,7 +135,7 @@ RSpec.describe LinkedList do
       expect(LinkedList.find_merge_node(list_1, list_2)).to be_nil
     end
 
-    it "should return the head node when supplying the same list as both arguments" do
+    it 'should return the head node when supplying the same list as both arguments' do
       # Initialize shared list
       head_shared_node = LinkedListNode.new(1000)
       head_shared_node.next = LinkedListNode.new(2001)
@@ -152,7 +154,7 @@ RSpec.describe LinkedList do
       expect(merge_node).to be head_shared_node
     end
 
-    it "should return the merge node" do
+    it 'should return the merge node' do
       # Initialize shared list
       head_shared_node = LinkedListNode.new(1000)
       head_shared_node.next = LinkedListNode.new(2001)
@@ -185,8 +187,8 @@ RSpec.describe LinkedList do
     end
   end
 
-  context "merge_lists" do
-    it "should merge 2 sorted lists" do
+  context 'merge_lists' do
+    it 'should merge 2 sorted lists' do
       list_1 = LinkedList.new
       list_1.append 1
       list_1.append 2
